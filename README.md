@@ -40,17 +40,26 @@ Example:
   "get_products": [{ "product_id": 102, "quantity": 1 }],
   "repetition_limit": 3
 }
+
 If the customer buys 4 units of product 101, they will receive 2 units of product 102 for free (since 4/2 = 2 repetitions, which is within the repetition limit).
 
 # Unimplemented Cases
 1.Coupon Stacking:
+
 Description: The ability to apply multiple coupons to the same cart.
+
 Reason: Not implemented due to potential complexity in determining interaction rules between coupons (e.g., stacking product-wise and cart-wise discounts). Implementing this feature requires advanced prioritization and interaction logic for coupon application order.
+
 2.Complex Constraints on Coupons:
+
 Description: Coupons with more complex constraints, such as time-limited or customer-specific coupons.
+
 Reason: These were considered but not implemented in this version to focus on the core functionalities of discount application.
+
 3.Coupons with Multiple Product Categories:
+
 Description: Support for category-wide discounts (e.g., discounts on all electronics).
+
 Reason: Handling category-wide discounts would require additional logic to link products with categories and process discounts accordingly, which was outside the scope of this implementation.
 
 # Limitations
