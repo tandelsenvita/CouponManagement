@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.Map;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "coupons")
 public class Coupon {
