@@ -1,5 +1,6 @@
-# CouponManagement
-Implemented Cases
+# CouponManagemen
+# Implemented Cases
+====================================
 1. Cart-wise Discount Coupons
 Description: Discounts are applied based on the total value of the cart. If the cart value exceeds a specified threshold, a percentage discount is applied to the total cart value.
 Implementation:
