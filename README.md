@@ -87,3 +87,76 @@ Only the following coupon types are supported: cart-wise, product-wise, and bxgy
 
 4.Product-Specific Discounts:
 For product-wise coupons, it is assumed that the product ID provided matches the products in the cart. The system doesn't validate product existence outside of the cart context.
+
+
+# Rest APIs
+1.POST/coupons
+
+Cart wise Request :  
+
+curl --location 'localhost:8081/coupons' \
+--header 'Content-Type: application/json' \
+--data '{
+    "type": "cart-wise",
+    "details": {
+        "threshold": 100,
+        "discount": 10
+    }
+}'
+
+Product-wise Request:
+
+curl --location 'localhost:8081/coupons' \
+--header 'Content-Type: application/json' \
+--data '{
+    "type": "product-wise",
+    "details": {
+        "product_id": 1,
+        "discount": 20
+    }
+}'
+
+BxGy Request:
+
+curl --location 'localhost:8081/coupons' \
+--header 'Content-Type: application/json' \
+--data '{
+    "type": "bxgy",
+    "details": {
+        "buy_products": [{ "product_id": 1,"quantity": 3},{"product_id": 2,"quantity": 3}],
+        "get_products": [{ "product_id": 3, "quantity": 1}],
+        "repition_limit": 2
+    }
+}'
+
+ 
+2. GET/coupons
+
+   curl --location 'localhost:8081/coupons'
+
+3. GET/coupons/{id}
+
+   curl --location 'localhost:8081/coupons/1'
+
+4. DELETE/coupons/{id}
+
+   curl --location --request DELETE 'localhost:8081/coupons/1'
+
+5. POST/applicable-coupons
+
+   curl --location 'localhost:8081/coupons/applicable-coupons' \
+--header 'Content-Type: application/json' \
+--data '{
+    "items": [{"id": 2,"quantity": 6,"price": 50},{"id": 2,"quantity": 3,"price": 30 },{"id": 3,"quantity": 2,"price": 25}]}'
+
+6. POST/apply-coupon/{id}
+
+   curl --location 'localhost:8081/coupons/apply-coupon/1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "items": [{"id": 1,"quantity": 6,"price": 50},{"id": 2,"quantity": 3,"price": 30},{"id": 3,"quantity": 2,"price": 25}]}'
+
+   
+
+   
+ 
