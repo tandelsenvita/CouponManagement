@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -24,6 +25,13 @@ public class GlobalExceptionHandler {
         log.error(ex.getMessage(), ex.fillInStackTrace());
         return (new ErrorResponsePayload(new Date(), HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), request.getDescription(false))).buildResponse();
     }
+    @ExceptionHandler({HttpMessageConversionException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Object> handleHttpMessageConversionException(HttpMessageConversionException ex, WebRequest request) {
+        log.error("Error in message conversion: {}", ex.getMessage(), ex);
+        return (new ErrorResponsePayload(new Date(), HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST, "Invalid request body: " + ex.getLocalizedMessage(), request.getDescription(false))).buildResponse();
+    }
+
 
     @ExceptionHandler({HttpMessageNotReadableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
