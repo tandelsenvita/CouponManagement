@@ -1,27 +1,39 @@
 # Implemented Cases
-====================================
 1. Cart-wise Discount Coupons
+   
 Description: Discounts are applied based on the total value of the cart. If the cart value exceeds a specified threshold, a percentage discount is applied to the total cart value.
+
 Implementation:
 The coupon checks if the cart total exceeds a predefined threshold. If so, the discount percentage is applied.
+
 Example:
+
 Coupon details: { "type": "cart-wise", "threshold": 100.0, "discount": 10.0 }
+
 If the cart total is $120, a 10% discount ($12) will be applied, resulting in a final total of $108.
+
 2. Product-wise Discount Coupons
+   
 Description: Discounts are applied to specific products in the cart if they are eligible for the coupon. The discount is based on a percentage applied to the product price.
+
 Implementation:
 The coupon targets a specific product ID in the cart and applies the discount percentage to the product's price.
+
 Example:
+
 Coupon details: { "type": "product-wise", "product_id": 101, "discount": 15.0 }
+
 If the product with ID 101 is in the cart and costs $50, a 15% discount ($7.50) will be applied to that product.
+
 3. BxGy (Buy X Get Y) Coupons
+   
 Description: Customers receive free products or discounts on products when they buy a specified quantity of certain items.
+
 Implementation:
 The coupon defines a set of products to be purchased and a set of products to be given free (or discounted). The number of free products is determined based on the number of times the purchase requirement is met (limited by a repetition limit).
+
 Example:
-Coupon details:
-json
-Copy code
+
 {
   "type": "bxgy",
   "buy_products": [{ "product_id": 101, "quantity": 2 }],
