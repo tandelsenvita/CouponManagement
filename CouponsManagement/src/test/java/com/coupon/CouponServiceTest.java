@@ -37,7 +37,8 @@ class CouponServiceTest {
         CartItem item1 = new CartItem(1L, 2, 100.0);
         CartItem item2 = new CartItem(2L, 1, 200.0);
         List<CartItem> items = List.of(item1, item2);
-        CartRequest cartRequest = new CartRequest(items);
+        CartRequest cartRequest = new CartRequest();
+        cartRequest.setItems(items);
         Map<String, Object> couponDetails = new HashMap<>();
         couponDetails.put("threshold", 250.0);
         couponDetails.put("discount", 10.0);
@@ -54,7 +55,8 @@ class CouponServiceTest {
         CartItem item1 = new CartItem(1L, 3, 50.0);
         CartItem item2 = new CartItem(2L, 1, 100.0);
         List<CartItem> items = List.of(item1, item2);
-        CartRequest cartRequest = new CartRequest(items);
+        CartRequest cartRequest = new CartRequest();
+        cartRequest.setItems(items);
         Map<String, Object> couponDetails = new HashMap<>();
         couponDetails.put("product_id", 1L);
         couponDetails.put("discount", 20.0);
@@ -70,7 +72,8 @@ class CouponServiceTest {
         CartItem item1 = new CartItem(1L, 4, 50.0);
         CartItem item2 = new CartItem(2L, 2, 100.0);
         List<CartItem> items = List.of(item1, item2);
-        CartRequest cartRequest = new CartRequest(items);
+        CartRequest cartRequest = new CartRequest();
+        cartRequest.setItems(items);
         Map<String, Object> buyProduct = new HashMap<>();
         buyProduct.put("product_id", 1L);
         buyProduct.put("quantity", 2);
